@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Bhai & Ujjwal Bhai | Premium Second-Hand Cars</title>
+    <style>
+        /* CSS RESET & CORE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff4d00;
+            --dark-color: #111827;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER & NAVBAR */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.85)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #e04400;
+            transform: translateY(-2px);
+        }
+
+        /* MAIN INVENTORY CONTAINER */
+        .container {
+            max-width: 1280px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--gray-color);
+            font-size: 1.05rem;
+        }
+
+        /* INVENTORY CARDS GRID */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .car-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .badge-verified {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .car-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .car-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .car-price {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+
+        .car-specs span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ABOUT FOUNDERS SECTION */
+        .about-section {
+            background-color: white;
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .founders-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .founder-box {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .founder-box h3 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .founder-box .role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 5px 0 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            color: #9ca3af;
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVITY */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="logo">DHRUV <span>&</span> UJJWAL BHAI CARS</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#cars">All Cars</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <h1>Drive Your Dream Car Today</h1>
+        <p>100% Certified Second-Hand Cars Handpicked & Checked by Dhruv Bhai & Ujjwal Bhai</p>
+        <a href="#cars" class="btn">View All 12 Available Cars</a>
+    </section>
+
+    <!-- INVENTORY SECTION -->
+    <div class="container" id="cars">
+        <div class="section-header">
+            <h2>Our Verified Cars Collection</h2>
+            <p>Every vehicle comes with a full service history and a 200+ point inspection report.</p>
+        </div>
+
+        <div class="car-grid">
+
+            <!-- CAR 1 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=700&q=80" alt="Honda City">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2021 Honda City VX</div>
+                    <div class="car-price">₹8,75,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 28,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ Manual</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 2 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=700&q=80" alt="Hyundai Creta">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2020 Hyundai Creta SX</div>
+                    <div class="car-price">₹10,50,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 41,000 km</span>
+                        <span>⛽ Diesel</span>
+                        <span>⚙️ Manual</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 3 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80" alt="Chevrolet Corvette / Sport Sedan">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2019 BMW 3 Series 320d</div>
+                    <div class="car-price">₹24,50,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 35,000 km</span>
+                        <span>⛽ Diesel</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 4 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=700&q=80" alt="Red Sports Hatchback">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2022 Maruti Suzuki Swift ZXi+</div>
+                    <div class="car-price">₹6,80,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 18,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ AMT</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 5 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=700&q=80" alt="4x4 SUV">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2021 Mahindra Thar LX 4x4</div>
+                    <div class="car-price">₹13,20,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 24,000 km</span>
+                        <span>⛽ Diesel</span>
+                        <span>⚙️ Manual</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 6 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=700&q=80" alt="White Sedan">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2020 Skoda Octavia Style</div>
+                    <div class="car-price">₹15,40,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 32,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ DSG Auto</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 7 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=700&q=80" alt="Compact SUV">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2021 Tata Nexon XZ+</div>
+                    <div class="car-price">₹8,20,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 29,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ Manual</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 8 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=700&q=80" alt="Silver Sedan">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2018 Toyota Corolla Altis VL</div>
+                    <div class="car-price">₹9,90,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 52,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 9 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80" alt="Luxury SUV">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2020 Mercedes-Benz GLA 200</div>
+                    <div class="car-price">₹28,50,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 26,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 10 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=700&q=80" alt="Yellow Sport Car">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2022 Volkswagen Polo GT TSI</div>
+                    <div class="car-price">₹7,90,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 15,000 km</span>
+                        <span>⛽ Petrol</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 11 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=700&q=80" alt="Black SUV">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2021 Kia Seltos GTX Plus</div>
+                    <div class="car-price">₹12,80,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 31,000 km</span>
+                        <span>⛽ Diesel</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+            <!-- CAR 12 -->
+            <div class="car-card">
+                <div class="car-image-wrapper">
+                    <span class="badge-verified">Certified</span>
+                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" alt="Luxury Sedan">
+                </div>
+                <div class="car-details">
+                    <div class="car-title">2019 Audi A4 35 TDI</div>
+                    <div class="car-price">₹22,90,000</div>
+                    <div class="car-specs">
+                        <span>🛣️ 40,000 km</span>
+                        <span>⛽ Diesel</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="section-header">
+            <h2>Meet the Owners</h2>
+            <p>Your satisfaction is our personal promise.</p>
+        </div>
+        
+        <div class="founders-grid">
+            <div class="founder-box">
+                <h3>Dhruv Bhai</h3>
+                <div class="role">Chief Vehicle Inspector</div>
+                <p style="color: var(--gray-color); font-size: 0.95rem;">Dhruv personally tests and inspects every vehicle to ensure top mechanical quality and zero accident history.</p>
+            </div>
+            <div class="founder-box">
+                <h3>Ujjwal Bhai</h3>
+                <div class="role">Customer & Finance Head</div>
+                <p style="color: var(--gray-color); font-size: 0.95rem;">Ujjwal takes care of smooth paperwork, transparent documentation, and quick loan approval processes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact">
+        <h3>Dhruv Bhai & Ujjwal Bhai Cars</h3>
+        <p>📍 Main Ring Road, Auto Hub, City Center</p>
+        <p>📞 Phone: +91 98765 43210 / +91 91234 56789</p>
+        <p>✉️ Email: info@dhruv-ujjwal-cars.com</p>
+        
+        <div class="copyright">
+            &copy; 2026 Dhruv Bhai & Ujjwal Bhai Used Cars. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
