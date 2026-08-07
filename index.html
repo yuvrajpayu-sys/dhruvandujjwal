@@ -3,572 +3,1446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhruv Bhai & Ujjwal Bhai | Premium Second-Hand Cars</title>
+    <title>YUVRAJ MOTOR SHOP | Elite Global Import Automotive</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              stone: {
+                850: '#1c1917',
+                950: '#0c0a09',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>
-        /* CSS RESET & CORE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #ff4d00;
-            --dark-color: #111827;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap');
         body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
-        /* HEADER & NAVBAR */
-        header {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
+        ::-webkit-scrollbar-track {
+            background: #0c0a09;
         }
-
-        .logo span {
-            color: var(--primary-color);
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
         }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.85)), 
-                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 25px;
-            color: #cbd5e1;
-        }
-
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background-color: #e04400;
-            transform: translateY(-2px);
-        }
-
-        /* MAIN INVENTORY CONTAINER */
-        .container {
-            max-width: 1280px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: var(--gray-color);
-            font-size: 1.05rem;
-        }
-
-        /* INVENTORY CARDS GRID */
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .car-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .car-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .car-image-wrapper {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .car-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .car-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .badge-verified {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(16, 185, 129, 0.9);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .car-details {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .car-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .car-price {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .car-specs {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray-color);
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
-            padding: 10px 0;
-            font-weight: 500;
-        }
-
-        .car-specs span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* ABOUT FOUNDERS SECTION */
-        .about-section {
-            background-color: white;
-            padding: 60px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .founders-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .founder-box {
-            background: var(--light-color);
-            padding: 30px;
-            border-radius: 12px;
-            width: 320px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-
-        .founder-box h3 {
-            font-size: 1.3rem;
-            color: var(--dark-color);
-        }
-
-        .founder-box .role {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin: 5px 0 10px;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 40px 20px 20px;
-            text-align: center;
-        }
-
-        footer h3 {
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        footer p {
-            color: #9ca3af;
-            margin-bottom: 5px;
-        }
-
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #374151;
-            font-size: 0.85rem;
-        }
-
-        /* RESPONSIVITY */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            header { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 10px; }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen bg-stone-950 text-white font-sans antialiased selection:bg-amber-500 selection:text-black">
 
-    <!-- NAVIGATION BAR -->
-    <header>
-        <div class="logo">DHRUV <span>&</span> UJJWAL BHAI CARS</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#cars">All Cars</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <!-- HEADER BAR -->
+    <header class="sticky top-0 z-40 bg-stone-950/90 backdrop-blur-md border-b border-stone-900 px-4 lg:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Logo Brand -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-yellow-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                    <span class="text-black font-extrabold text-xl tracking-tight">Y</span>
+                </div>
+                <div>
+                    <h1 class="text-xl lg:text-2xl font-black tracking-widest bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                        YUVRAJ MOTOR SHOP
+                    </h1>
+                    <p class="text-[10px] tracking-[0.25em] text-stone-400 uppercase font-semibold">Elite Global Import Automotive</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex items-center bg-stone-900/60 p-1 rounded-full border border-stone-800">
+                <button id="nav-showroom" onclick="switchTab('showroom')" class="px-5 py-2 rounded-full text-xs lg:text-sm font-bold tracking-wider uppercase transition-all duration-300 bg-gradient-to-r from-amber-500 to-yellow-500 text-black shadow-md shadow-amber-500/10">
+                    Showroom
+                </button>
+                <button id="nav-compare" onclick="switchTab('compare')" class="px-5 py-2 rounded-full text-xs lg:text-sm font-bold tracking-wider uppercase transition-all duration-300 text-stone-300 hover:text-white flex items-center gap-2">
+                    Compare
+                    <span id="compare-badge" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500 text-black hidden">0</span>
+                </button>
+                <button id="nav-finance" onclick="switchTab('finance')" class="px-5 py-2 rounded-full text-xs lg:text-sm font-bold tracking-wider uppercase transition-all duration-300 text-stone-300 hover:text-white">
+                    Calculator
+                </button>
+            </nav>
+
+            <!-- Contact Accent -->
+            <div class="hidden lg:flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-xs text-stone-400">VIP Direct Hotline</p>
+                    <p class="text-sm font-bold text-amber-400">1800-103-YUVRAJ</p>
+                </div>
+                <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
+
+        </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <h1>Drive Your Dream Car Today</h1>
-        <p>100% Certified Second-Hand Cars Handpicked & Checked by Dhruv Bhai & Ujjwal Bhai</p>
-        <a href="#cars" class="btn">View All 12 Available Cars</a>
-    </section>
+    <!-- TAB 1: SHOWROOM VIEW -->
+    <main id="tab-showroom" class="pb-24">
+        <!-- HERO SECTION -->
+        <section class="relative overflow-hidden bg-gradient-to-b from-stone-900 to-stone-950 py-16 lg:py-24 px-4 border-b border-stone-900">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[35vh] bg-gradient-to-b from-amber-500/5 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+            
+            <div class="absolute right-0 bottom-0 top-0 w-full md:w-1/2 opacity-15 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80" alt="luxury vehicle backdrop" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/70 to-transparent"></div>
+            </div>
 
-    <!-- INVENTORY SECTION -->
-    <div class="container" id="cars">
-        <div class="section-header">
-            <h2>Our Verified Cars Collection</h2>
-            <p>Every vehicle comes with a full service history and a 200+ point inspection report.</p>
+            <div class="max-w-7xl mx-auto text-center md:text-left relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-8">
+                    <span class="text-xs uppercase tracking-[0.4em] text-amber-500 font-extrabold bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20 inline-block">
+                        Flagship Indian Import Showroom
+                    </span>
+                    <h2 class="text-4xl md:text-6xl lg:text-7xl font-black mt-6 tracking-tight leading-none">
+                        THE NATION'S PREMIER <br />
+                        <span class="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                            HYPERCAR & LUXURY
+                        </span> DESTINATION
+                    </h2>
+                    <p class="mt-6 text-stone-400 max-w-xl text-sm md:text-base leading-relaxed">
+                        Yuvraj Motor Shop curates the finest hypercars, supercars, muscular track machines, and ultra-luxury flagships for automotive collectors across India.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 bg-stone-900/80 border border-stone-850 p-6 rounded-2xl backdrop-blur-md">
+                    <p class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">Flagship Spotlight</p>
+                    <h4 class="text-lg font-black text-white mt-1">Bugatti Chiron Super Sport</h4>
+                    <p class="text-xs text-stone-400 mt-2 line-clamp-2">1,578 HP quad-turbo W16 engineering masterpiece capable of 440 km/h.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="text-sm font-extrabold text-amber-400">₹28.40 Crore</span>
+                        <button onclick="openDetailModal('bugatti')" class="text-xs bg-amber-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-amber-400 transition">
+                            View Specs
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATS STRIP -->
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 mt-12">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl">
+                    <div class="bg-stone-900/40 border border-stone-800/80 rounded-2xl p-4 backdrop-blur-sm">
+                        <p class="text-xl md:text-2xl font-black text-amber-400">100%</p>
+                        <p class="text-xs text-stone-400 mt-1 uppercase tracking-wider">Custom Duty Cleared</p>
+                    </div>
+                    <div class="bg-stone-900/40 border border-stone-800/80 rounded-2xl p-4 backdrop-blur-sm">
+                        <p class="text-xl md:text-2xl font-black text-amber-400">20 Flagships</p>
+                        <p class="text-xs text-stone-400 mt-1 uppercase tracking-wider">Curated World Models</p>
+                    </div>
+                    <div class="bg-stone-900/40 border border-stone-800/80 rounded-2xl p-4 backdrop-blur-sm">
+                        <p class="text-xl md:text-2xl font-black text-amber-400">Pan-India</p>
+                        <p class="text-xs text-stone-400 mt-1 uppercase tracking-wider">Enclosed Transit</p>
+                    </div>
+                    <div class="bg-stone-900/40 border border-stone-800/80 rounded-2xl p-4 backdrop-blur-sm">
+                        <p class="text-xl md:text-2xl font-black text-amber-400">24/7</p>
+                        <p class="text-xs text-stone-400 mt-1 uppercase tracking-wider">VIP Concierge</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTROL BAR -->
+        <section class="max-w-7xl mx-auto px-4 lg:px-8 mt-12">
+            <div class="bg-stone-900/60 p-4 md:p-6 rounded-2xl border border-stone-800 backdrop-blur-sm flex flex-col gap-4 md:gap-6">
+                
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="relative w-full md:max-w-md">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-stone-500">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </span>
+                        <input id="search-input" type="text" oninput="renderShowroom()" placeholder="Search Bugatti, Ford Figo, Mustang, Endeavour, GT-R..." class="w-full bg-stone-950/80 border border-stone-800 focus:border-amber-500 rounded-xl py-3 pl-12 pr-4 text-sm text-white placeholder-stone-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all">
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                        <span class="text-xs uppercase tracking-wider text-stone-400 font-bold whitespace-nowrap">Sort By:</span>
+                        <select id="sort-select" onchange="renderShowroom()" class="bg-stone-950 border border-stone-800 focus:border-amber-500 text-stone-300 text-xs rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-amber-500 font-semibold cursor-pointer">
+                            <option value="default">Default Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="hp">Performance: Horsepower</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 border-t border-stone-800/80 pt-4">
+                    <div class="flex flex-wrap items-center gap-2" id="brand-filters">
+                        <!-- Dynamic Brands Rendered Here -->
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2" id="type-filters">
+                        <!-- Dynamic Types Rendered Here -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CAR SHOWROOM GRID -->
+        <section class="max-w-7xl mx-auto px-4 lg:px-8 mt-8">
+            <div id="showroom-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Cars dynamically injected -->
+            </div>
+        </section>
+
+        <!-- BRANDS WE SERVE BANNER -->
+        <section class="bg-stone-900/20 py-16 border-y border-stone-900 mt-24">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <span class="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-extrabold">Elite Global Portfolio</span>
+                <h3 class="text-2xl font-black mt-2 text-white">THE BRAND MAJESTIES</h3>
+                
+                <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12 mt-10 opacity-60">
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">BUGATTI</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">FORD</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">KOENIGSEGG</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">LAMBORGHINI</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">FERRARI</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">ROLLS-ROYCE</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">MCLAREN</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">PORSCHE</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">MERCEDES-BENZ</span>
+                    <span class="text-xs md:text-lg font-extrabold tracking-[0.2em] text-stone-400">BMW</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- INQUIRY BANNER -->
+        <section class="max-w-5xl mx-auto px-4 mt-24">
+            <div class="bg-gradient-to-tr from-amber-950/40 via-stone-900 to-stone-900 border border-amber-500/10 p-8 md:p-12 rounded-3xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 blur-3xl rounded-full"></div>
+                <div class="relative z-10 max-w-xl">
+                    <h3 class="text-2xl md:text-4xl font-black text-white leading-tight">
+                        WANT A BESPOKE IMPORT CONCIERGE EXPERIENCE?
+                    </h3>
+                    <p class="text-stone-400 text-sm mt-4 leading-relaxed">
+                        Can't find the exact specifications, customized trim levels, or carbon aerodynamics options? Our international acquisition team can trace down any bespoke option worldwide.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="openBookingModal('bugatti')" class="bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-extrabold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/10 hover:scale-105 transition-all">
+                            Consult Acquisition Expert
+                        </button>
+                        <a href="tel:18001039887" class="bg-stone-950 border border-stone-800 text-stone-300 font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl hover:bg-stone-900 transition-all flex items-center justify-center">
+                            Call Center Agent
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- TAB 2: COMPARISON ENGINE -->
+    <main id="tab-compare" class="max-w-7xl mx-auto px-4 lg:px-8 py-16 pb-24 hidden">
+        <div class="text-center mb-12">
+            <span class="text-xs uppercase tracking-[0.3em] text-amber-500 font-extrabold">Side-by-Side Analysis</span>
+            <h2 class="text-3xl md:text-5xl font-black mt-3">VEHICLE COMPARE ENGINE</h2>
+            <p class="text-stone-400 mt-4 max-w-xl mx-auto text-sm">
+                Evaluate pure performance specs, luxurious power ratios, and Indian pricing to decide which master-crafted machine earns its spot in your prestige garage.
+            </p>
         </div>
 
-        <div class="car-grid">
+        <div id="compare-container">
+            <!-- Dynamic comparison content -->
+        </div>
+    </main>
 
-            <!-- CAR 1 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=700&q=80" alt="Honda City">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2021 Honda City VX</div>
-                    <div class="car-price">₹8,75,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 28,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ Manual</span>
+    <!-- TAB 3: FINANCE CALCULATOR -->
+    <main id="tab-finance" class="max-w-7xl mx-auto px-4 lg:px-8 py-16 pb-24 hidden">
+        <div class="text-center mb-12">
+            <span class="text-xs uppercase tracking-[0.3em] text-amber-500 font-extrabold">Premium Indian Car Loans</span>
+            <h2 class="text-3xl md:text-5xl font-black mt-3">PRESTIGE FINANCE CALCULATOR</h2>
+            <p class="text-stone-400 mt-4 max-w-xl mx-auto text-sm">
+                Analyze realistic monthly luxury payments tailored in Indian Rupees (INR). Simply select your model and adapt interest rates below.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-7 bg-stone-900 border border-stone-800 rounded-3xl p-6 space-y-6">
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-stone-400 font-extrabold block mb-3">
+                        Choose Showroom Model
+                    </label>
+                    <div id="calculator-car-buttons" class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        <!-- Car option buttons injected -->
                     </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs uppercase tracking-widest text-stone-400 font-extrabold">Down Payment Percentage</label>
+                        <span id="downpayment-display" class="text-sm font-extrabold text-amber-400">20%</span>
+                    </div>
+                    <input id="slider-downpayment" type="range" min="10" max="80" value="20" oninput="calculateFinance()" class="w-full accent-amber-500 h-1 bg-stone-950 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-stone-500 mt-1">
+                        <span>10% (Min)</span>
+                        <span>50%</span>
+                        <span>80% (Max)</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs uppercase tracking-widest text-stone-400 font-extrabold">Annual Interest Rate</label>
+                        <span id="interest-display" class="text-sm font-extrabold text-amber-400">8.5% APR</span>
+                    </div>
+                    <input id="slider-interest" type="range" min="5.0" max="15.0" step="0.1" value="8.5" oninput="calculateFinance()" class="w-full accent-amber-500 h-1 bg-stone-950 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-stone-500 mt-1">
+                        <span>5.0% Special Rate</span>
+                        <span>8.5% Standard Bank ROI</span>
+                        <span>15.0% Max Rate</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs uppercase tracking-widest text-stone-400 font-extrabold">Loan Term / Duration</label>
+                        <span id="term-display" class="text-sm font-extrabold text-amber-400">60 Months (5 Years)</span>
+                    </div>
+                    <input id="slider-term" type="range" min="24" max="84" step="12" value="60" oninput="calculateFinance()" class="w-full accent-amber-500 h-1 bg-stone-950 rounded-lg appearance-none cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-stone-500 mt-1">
+                        <span>24 Months (2 Yrs)</span>
+                        <span>48 Months</span>
+                        <span>84 Months (7 Yrs)</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- CAR 2 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=700&q=80" alt="Hyundai Creta">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2020 Hyundai Creta SX</div>
-                    <div class="car-price">₹10,50,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 41,000 km</span>
-                        <span>⛽ Diesel</span>
-                        <span>⚙️ Manual</span>
+            <!-- Output Panel -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-gradient-to-br from-stone-900 to-stone-950 border-2 border-amber-500/20 rounded-3xl p-6 text-center shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-12 -top-12 w-24 h-24 bg-amber-500/5 blur-xl rounded-full"></div>
+                    
+                    <div class="h-32 rounded-xl overflow-hidden mb-4 relative">
+                        <img id="calc-car-image" src="" alt="calc car" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-stone-950 to-transparent"></div>
                     </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
+
+                    <span class="text-[10px] uppercase tracking-widest bg-amber-500/15 border border-amber-500/30 text-amber-400 font-black px-4 py-1.5 rounded-full">
+                        Estimated Monthly EMI
+                    </span>
+
+                    <p id="calc-emi-display" class="text-3xl md:text-4xl font-black mt-6 tracking-tight text-white">
+                        ₹0 <span id="calc-term-sub" class="text-xs text-stone-400 block font-normal mt-1">/ Month</span>
+                    </p>
+
+                    <div class="border-t border-stone-800/80 my-6 pt-6 space-y-3.5 text-left text-xs text-stone-300">
+                        <div class="flex justify-between">
+                            <span class="text-stone-500 font-semibold">Ex-Showroom Price:</span>
+                            <span id="calc-price" class="font-bold text-white">₹0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-stone-500 font-semibold">Down Payment Paid:</span>
+                            <span id="calc-downpayment" class="font-bold text-amber-400">₹0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-stone-500 font-semibold">Loan Principal Amount:</span>
+                            <span id="calc-principal" class="font-bold text-white">₹0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-stone-500 font-semibold">Total Estimated Interest:</span>
+                            <span id="calc-interest" class="font-bold text-stone-400">₹0</span>
+                        </div>
+                        <div class="flex justify-between border-t border-stone-800 pt-3 text-sm">
+                            <span class="text-stone-400 font-extrabold">Cumulative Cost:</span>
+                            <span id="calc-total" class="font-black text-amber-400">₹0</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openBookingFromCalc()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-extrabold text-xs uppercase tracking-widest py-3.5 rounded-xl shadow-lg shadow-amber-500/10 hover:scale-102 transition-all mt-2">
+                        Acquire Financing Pre-Approval
+                    </button>
                 </div>
             </div>
+        </div>
+    </main>
 
-            <!-- CAR 3 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80" alt="Chevrolet Corvette / Sport Sedan">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2019 BMW 3 Series 320d</div>
-                    <div class="car-price">₹24,50,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 35,000 km</span>
-                        <span>⛽ Diesel</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
+    <!-- DETAILS MODAL -->
+    <div id="detail-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto hidden">
+        <div class="bg-stone-900 border border-stone-800 rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative my-8">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 bg-stone-950 hover:bg-stone-800 text-stone-400 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all text-sm z-10">✕</button>
+            <div id="detail-modal-body" class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Modal content dynamically injected -->
             </div>
-
-            <!-- CAR 4 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=700&q=80" alt="Red Sports Hatchback">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2022 Maruti Suzuki Swift ZXi+</div>
-                    <div class="car-price">₹6,80,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 18,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ AMT</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 5 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=700&q=80" alt="4x4 SUV">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2021 Mahindra Thar LX 4x4</div>
-                    <div class="car-price">₹13,20,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 24,000 km</span>
-                        <span>⛽ Diesel</span>
-                        <span>⚙️ Manual</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 6 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=700&q=80" alt="White Sedan">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2020 Skoda Octavia Style</div>
-                    <div class="car-price">₹15,40,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 32,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ DSG Auto</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 7 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=700&q=80" alt="Compact SUV">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2021 Tata Nexon XZ+</div>
-                    <div class="car-price">₹8,20,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 29,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ Manual</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 8 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=700&q=80" alt="Silver Sedan">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2018 Toyota Corolla Altis VL</div>
-                    <div class="car-price">₹9,90,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 52,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 9 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80" alt="Luxury SUV">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2020 Mercedes-Benz GLA 200</div>
-                    <div class="car-price">₹28,50,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 26,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 10 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=700&q=80" alt="Yellow Sport Car">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2022 Volkswagen Polo GT TSI</div>
-                    <div class="car-price">₹7,90,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 15,000 km</span>
-                        <span>⛽ Petrol</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 11 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=700&q=80" alt="Black SUV">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2021 Kia Seltos GTX Plus</div>
-                    <div class="car-price">₹12,80,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 31,000 km</span>
-                        <span>⛽ Diesel</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
-            <!-- CAR 12 -->
-            <div class="car-card">
-                <div class="car-image-wrapper">
-                    <span class="badge-verified">Certified</span>
-                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" alt="Luxury Sedan">
-                </div>
-                <div class="car-details">
-                    <div class="car-title">2019 Audi A4 35 TDI</div>
-                    <div class="car-price">₹22,90,000</div>
-                    <div class="car-specs">
-                        <span>🛣️ 40,000 km</span>
-                        <span>⛽ Diesel</span>
-                        <span>⚙️ Automatic</span>
-                    </div>
-                    <button class="btn" style="width: 100%; margin-top: auto;">Book Test Drive</button>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section" id="about">
-        <div class="section-header">
-            <h2>Meet the Owners</h2>
-            <p>Your satisfaction is our personal promise.</p>
-        </div>
-        
-        <div class="founders-grid">
-            <div class="founder-box">
-                <h3>Dhruv Bhai</h3>
-                <div class="role">Chief Vehicle Inspector</div>
-                <p style="color: var(--gray-color); font-size: 0.95rem;">Dhruv personally tests and inspects every vehicle to ensure top mechanical quality and zero accident history.</p>
-            </div>
-            <div class="founder-box">
-                <h3>Ujjwal Bhai</h3>
-                <div class="role">Customer & Finance Head</div>
-                <p style="color: var(--gray-color); font-size: 0.95rem;">Ujjwal takes care of smooth paperwork, transparent documentation, and quick loan approval processes.</p>
-            </div>
-        </div>
-    </section>
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto hidden">
+        <div class="bg-stone-900 border border-stone-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative p-6 md:p-8">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 bg-stone-950 hover:bg-stone-800 text-stone-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition-all text-xs">✕</button>
+            
+            <div id="booking-form-step">
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">VIP Showroom Pass</span>
+                <h3 class="text-2xl font-black text-white mt-1">TEST DRIVE BOOKING REQUEST</h3>
+                <p class="text-stone-400 text-xs mt-1">
+                    Reserving private slot for: <strong id="booking-car-name" class="text-white">Car Name</strong>
+                </p>
 
-    <!-- FOOTER / CONTACT -->
-    <footer id="contact">
-        <h3>Dhruv Bhai & Ujjwal Bhai Cars</h3>
-        <p>📍 Main Ring Road, Auto Hub, City Center</p>
-        <p>📞 Phone: +91 98765 43210 / +91 91234 56789</p>
-        <p>✉️ Email: info@dhruv-ujjwal-cars.com</p>
-        
-        <div class="copyright">
-            &copy; 2026 Dhruv Bhai & Ujjwal Bhai Used Cars. All Rights Reserved.
+                <form onsubmit="handleBookingSubmit(event)" class="mt-6 space-y-4">
+                    <div>
+                        <label class="text-[10px] uppercase text-stone-400 tracking-wider font-extrabold block mb-1.5">Your Full Legal Name</label>
+                        <input id="book-name" type="text" required placeholder="e.g. Yuvraj Singh" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-xs text-white placeholder-stone-600 focus:outline-none focus:border-amber-500">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] uppercase text-stone-400 tracking-wider font-extrabold block mb-1.5">Email Address</label>
+                            <input id="book-email" type="email" required placeholder="vip@domain.com" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-xs text-white placeholder-stone-600 focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase text-stone-400 tracking-wider font-extrabold block mb-1.5">Contact Phone</label>
+                            <input id="book-phone" type="tel" required placeholder="+91 XXXXX XXXXX" class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-xs text-white placeholder-stone-600 focus:outline-none focus:border-amber-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-[10px] uppercase text-stone-400 tracking-wider font-extrabold block mb-1.5">Preferred Booking Date</label>
+                        <input id="book-date" type="date" required class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-500 cursor-pointer">
+                    </div>
+
+                    <div>
+                        <label class="text-[10px] uppercase text-stone-400 tracking-wider font-extrabold block mb-1.5">Special Acquisition Notes / Bespoke Trims</label>
+                        <textarea id="book-notes" rows="2" placeholder="Specify customized wheel colors, caliper selections, or special delivery terms..." class="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-xs text-white placeholder-stone-600 focus:outline-none focus:border-amber-500 resize-none"></textarea>
+                    </div>
+
+                    <p class="text-[10px] text-stone-500 leading-relaxed">
+                        * By scheduling a drive, you confirm compliance with premium automotive criteria.
+                    </p>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-extrabold text-xs uppercase tracking-widest py-3.5 rounded-xl shadow-lg hover:scale-102 transition-all mt-4">
+                        Confirm VIP Reservation
+                    </button>
+                </form>
+            </div>
+
+            <div id="booking-confirmed-step" class="text-center py-6 hidden">
+                <span class="text-4xl">🎫</span>
+                <h3 class="text-2xl font-black text-green-400 mt-4">VIP PASS ISSUED</h3>
+                <p class="text-stone-300 text-xs mt-1">Your reservation request has been processed securely.</p>
+
+                <div class="bg-stone-950 border-2 border-dashed border-amber-500/30 rounded-2xl p-6 mt-6 text-left relative overflow-hidden">
+                    <div id="ticket-tier" class="absolute top-0 right-0 bg-amber-500 text-black text-[9px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Diamond Guest Access
+                    </div>
+                    
+                    <p class="text-[9px] uppercase tracking-wider text-stone-500 font-bold">Pass Identification</p>
+                    <p id="ticket-id" class="text-sm font-mono font-black text-amber-400 mt-0.5">YUVRAJ-102938</p>
+
+                    <div class="grid grid-cols-2 gap-4 mt-4 text-xs">
+                        <div>
+                            <p class="text-[9px] uppercase text-stone-500 font-bold">Guest Holder</p>
+                            <p id="ticket-customer" class="font-extrabold text-stone-200 mt-0.5">Yuvraj Singh</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] uppercase text-stone-500 font-bold">Showroom Model</p>
+                            <p id="ticket-car" class="font-extrabold text-white mt-0.5">Bugatti Chiron</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-4 text-xs">
+                        <div>
+                            <p class="text-[9px] uppercase text-stone-500 font-bold">Date Slot</p>
+                            <p id="ticket-date" class="font-extrabold text-stone-200 mt-0.5">2026-08-15</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] uppercase text-stone-500 font-bold">Viewing Time</p>
+                            <p class="font-extrabold text-amber-500 mt-0.5 text-[10px]">Premium Afternoon Slot (2:00 PM - 5:00 PM)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-[11px] text-stone-400 mt-6 leading-relaxed">
+                    An elite acquisitions liaison will contact you within 2 hours to coordinate the secure delivery of your personalized test scheduling credentials.
+                </p>
+
+                <button onclick="closeBookingModal()" class="mt-6 w-full bg-stone-950 border border-stone-800 hover:bg-stone-900 text-stone-300 font-bold text-xs uppercase py-3 rounded-xl transition-all">
+                    Return to Showroom
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-950 border-t border-stone-900 py-12 px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-yellow-500 flex items-center justify-center">
+                        <span class="text-black font-extrabold text-lg">Y</span>
+                    </div>
+                    <h4 class="font-black tracking-widest text-lg bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                        YUVRAJ MOTOR SHOP
+                    </h4>
+                </div>
+                <p class="text-xs text-stone-400 leading-relaxed max-w-sm">
+                    Acquiring global masterwork engineering, handling custom customs legalities, and delivering premium dream luxury directly to your estate driveway.
+                </p>
+                <p class="text-[10px] text-stone-500">
+                    © 2026 Yuvraj Motor Shop Inc. All International Rights Reserved.
+                </p>
+            </div>
+
+            <div>
+                <h5 class="text-xs uppercase tracking-widest font-black text-white mb-4">Elite Showroom</h5>
+                <ul class="space-y-2 text-xs text-stone-400">
+                    <li><button onclick="filterBrand('Ford')" class="hover:text-amber-400 transition-all">Ford Performance</button></li>
+                    <li><button onclick="filterType('Hypercar')" class="hover:text-amber-400 transition-all">Hypercar Division</button></li>
+                    <li><button onclick="filterBrand('Lamborghini')" class="hover:text-amber-400 transition-all">Lamborghini Division</button></li>
+                    <li><button onclick="filterBrand('Ferrari')" class="hover:text-amber-400 transition-all">Scuderia Ferrari</button></li>
+                    <li><button onclick="filterBrand('Rolls-Royce')" class="hover:text-amber-400 transition-all">Rolls-Royce Bespoke</button></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-xs uppercase tracking-widest font-black text-white mb-4">Global Offices</h5>
+                <p class="text-xs text-stone-400 leading-relaxed">
+                    Yuvraj Premium Portals<br />
+                    VIP Plaza Road, Sector Elite-10<br />
+                    New Delhi / International Imports hub<br />
+                    <span class="text-amber-400 block mt-2 font-bold">concierge@yuvrajmotorshop.com</span>
+                </p>
+            </div>
         </div>
     </footer>
 
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // FLEET DATA WITH EXPANDED FORD CARS (INCLUDING FORD FIGO)
+        const CAR_DATA = [
+            {
+                id: 'bugatti',
+                name: 'Bugatti Chiron Super Sport',
+                brand: 'Bugatti',
+                type: 'Hypercar',
+                price: 284000000,
+                engine: '8.0L Quad-Turbo W16',
+                power: '1578 HP',
+                topSpeed: '440 km/h',
+                acceleration: '2.4s',
+                driveType: 'AWD',
+                transmission: '7-Speed Dual-Clutch',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80',
+                description: 'The ultimate hypercar masterpiece. Engineered with an extraordinary quad-turbocharged W16 powerhouse capable of pushing aerospace-level speeds with unmatched handcrafted luxury.',
+                colors: [
+                    { name: 'French Racing Blue / Exposed Carbon', hex: '#00205b', bgClass: 'from-blue-900 to-black' },
+                    { name: 'Nero Black & Gold accent', hex: '#111111', bgClass: 'from-zinc-900 to-amber-950' },
+                    { name: 'Glacier White & Matte Carbon', hex: '#f8fafc', bgClass: 'from-slate-100 to-slate-900' }
+                ],
+                highlight: '1578 HP W16 Quad-Turbo'
+            },
+            {
+                id: 'figo',
+                name: 'Ford Figo Titanium Titanium / Blu',
+                brand: 'Ford',
+                type: 'Hatchback',
+                price: 780000,
+                engine: '1.5L TDCi Diesel / 1.2L Ti-VCT Petrol',
+                power: '100 HP',
+                topSpeed: '175 km/h',
+                acceleration: '10.5s',
+                driveType: 'FWD',
+                transmission: '5-Speed Manual',
+                fuel: 'Diesel / Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
+                description: 'A punchy, agile urban hot-hatch back, famous for its class-leading 100 HP TDCi turbo diesel motor, precise handling dynamics, and robust build quality.',
+                colors: [
+                    { name: 'Moondust Silver', hex: '#9ca3af', bgClass: 'from-slate-400 to-stone-800' },
+                    { name: 'Ruby Red', hex: '#991b1b', bgClass: 'from-red-700 to-black' },
+                    { name: 'Smoke Grey', hex: '#4b5563', bgClass: 'from-zinc-600 to-zinc-950' },
+                    { name: 'Oxford White', hex: '#f8fafc', bgClass: 'from-slate-100 to-stone-700' }
+                ],
+                highlight: 'Class-Leading TDCi Diesel Punch'
+            },
+            {
+                id: 'fordgt',
+                name: 'Ford GT Heritage Edition',
+                brand: 'Ford',
+                type: 'Hypercar',
+                price: 120000000,
+                engine: '3.5L Twin-Turbo EcoBoost V6',
+                power: '660 HP',
+                topSpeed: '348 km/h',
+                acceleration: '3.0s',
+                driveType: 'RWD',
+                transmission: '7-Speed Dual-Clutch',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=1000&q=80',
+                description: 'Born from Le Mans racing glory. Features carbon fiber teardrop aerodynamics, active rear wing downforce, and a roaring mid-mounted EcoBoost twin-turbo engine.',
+                colors: [
+                    { name: 'Gulf Livery Orange & Blue', hex: '#ff6600', bgClass: 'from-blue-600 via-amber-500 to-black' },
+                    { name: 'Frozen White & Carbon', hex: '#ffffff', bgClass: 'from-stone-200 to-stone-900' },
+                    { name: 'Liquid Red Metallic', hex: '#b91c1c', bgClass: 'from-red-700 to-stone-950' }
+                ],
+                highlight: 'Carbon Monocoque Le Mans Winner'
+            },
+            {
+                id: 'mustang',
+                name: 'Ford Mustang Dark Horse',
+                brand: 'Ford',
+                type: 'Muscle Car',
+                price: 11000000,
+                engine: '5.0L Naturally Aspirated Coyote V8',
+                power: '500 HP',
+                topSpeed: '270 km/h',
+                acceleration: '3.7s',
+                driveType: 'RWD',
+                transmission: '6-Speed TREMEC Manual / 10-Speed Auto',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=1000&q=80',
+                description: 'The standard of modern American muscle. Packed with a 500-horsepower naturally aspirated 5.0L V8 engine, MagneRide damping, and aggressive track-tuned aerodynamics.',
+                colors: [
+                    { name: 'Blue Ember Metallic', hex: '#1e3a8a', bgClass: 'from-blue-900 to-stone-950' },
+                    { name: 'Shadow Black', hex: '#0f0f11', bgClass: 'from-zinc-900 to-black' },
+                    { name: 'Grabber Blue Metallic', hex: '#0284c7', bgClass: 'from-sky-600 to-slate-900' }
+                ],
+                highlight: '500 HP Coyote V8 Track Beast'
+            },
+            {
+                id: 'raptor',
+                name: 'Ford F-150 Raptor R',
+                brand: 'Ford',
+                type: 'Luxury SUV',
+                price: 21000000,
+                engine: '5.2L Supercharged V8 (Predator)',
+                power: '720 HP',
+                topSpeed: '180 km/h',
+                acceleration: '3.6s',
+                driveType: '4WD Terrain Management',
+                transmission: '10-Speed SelectShift Automatic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',
+                description: 'The pinnacle high-performance off-road desert truck. Powered by a supercharged 5.2L Predator V8 producing 720 HP with FOX Live Valve shocks for terrain mastery.',
+                colors: [
+                    { name: 'Code Orange Metallic', hex: '#ea580c', bgClass: 'from-orange-600 to-stone-950' },
+                    { name: 'Avalanche Grey', hex: '#94a3b8', bgClass: 'from-slate-400 to-stone-900' },
+                    { name: 'Agate Black', hex: '#18181b', bgClass: 'from-stone-900 to-black' }
+                ],
+                highlight: '720 HP Supercharged V8 Trophy Truck'
+            },
+            {
+                id: 'endeavour',
+                name: 'Ford Endeavour Titanium+',
+                brand: 'Ford',
+                type: 'Luxury SUV',
+                price: 4000000,
+                engine: '2.0L EcoBlue Bi-Turbo Diesel',
+                power: '168 HP',
+                topSpeed: '175 km/h',
+                acceleration: '10.2s',
+                driveType: '4WD Terrain Management',
+                transmission: '10-Speed SelectShift',
+                fuel: 'Diesel',
+                imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
+                description: 'Designed for effortless highway cruising and intense backroad mastery. Offering an elite panoramic sunroof, active cabin noise-cancellation, and a class-leading 10-speed automatic transmission.',
+                colors: [
+                    { name: 'Absolute Black', hex: '#0a0a0a', bgClass: 'from-zinc-900 to-neutral-950' },
+                    { name: 'Diffused Silver Metallic', hex: '#949599', bgClass: 'from-slate-400 to-stone-700' },
+                    { name: 'Diamond White', hex: '#fdfdfd', bgClass: 'from-white to-slate-200' }
+                ],
+                highlight: 'Advanced 10-Speed Transmission'
+            },
+            {
+                id: 'koenigsegg',
+                name: 'Koenigsegg Jesko Attack',
+                brand: 'Koenigsegg',
+                type: 'Hypercar',
+                price: 380000000,
+                engine: '5.0L Twin-Turbo Flat-Plane V8',
+                power: '1600 HP',
+                topSpeed: '480 km/h',
+                acceleration: '2.5s',
+                driveType: 'RWD',
+                transmission: '9-Speed Light Speed Transmission (LST)',
+                fuel: 'E85 / Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80',
+                description: 'A track monster from Sweden equipped with active aerodynamic downforce producing over 1,000 kg of aero pressure, revolutionary Light Speed multi-clutch gearing, and revolutionary carbon engineering.',
+                colors: [
+                    { name: 'Tang Orange Pearl', hex: '#ff6600', bgClass: 'from-orange-600 to-stone-950' },
+                    { name: 'Clear Carbon / Lime Accent', hex: '#222222', bgClass: 'from-emerald-950 to-black' },
+                    { name: 'Pearl White & Gold Leaf', hex: '#f1f5f9', bgClass: 'from-amber-200 to-zinc-900' }
+                ],
+                highlight: 'Active Aero & 1600 HP'
+            },
+            {
+                id: 'lambo',
+                name: 'Lamborghini Aventador SVJ',
+                brand: 'Lamborghini',
+                type: 'Supercar',
+                price: 62500000,
+                engine: '6.5L V12 N/A',
+                power: '770 HP',
+                topSpeed: '350 km/h',
+                acceleration: '2.8s',
+                driveType: 'AWD',
+                transmission: '7-Speed ISR',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=1000&q=80',
+                description: 'The pinnacle of naturally aspirated Italian V12 mastery. Featuring active aerodynamics (ALA 2.0) and ultra-lightweight carbon fiber construction built for ultimate track records and road dominance.',
+                colors: [
+                    { name: 'Arancio Atlas (Orange)', hex: '#ff5a00', bgClass: 'from-orange-600 to-amber-500' },
+                    { name: 'Verde Mantis (Green)', hex: '#39ff14', bgClass: 'from-green-500 to-emerald-700' },
+                    { name: 'Giallo Orion (Yellow)', hex: '#ffd700', bgClass: 'from-yellow-400 to-amber-600' },
+                    { name: 'Nero Pegaso (Matte Black)', hex: '#111111', bgClass: 'from-zinc-800 to-black' }
+                ],
+                highlight: 'Naturally Aspirated V12'
+            },
+            {
+                id: 'ferrari',
+                name: 'Ferrari SF90 Stradale',
+                brand: 'Ferrari',
+                type: 'Supercar',
+                price: 75000000,
+                engine: '4.0L Twin-Turbo V8 Hybrid',
+                power: '986 HP',
+                topSpeed: '340 km/h',
+                acceleration: '2.5s',
+                driveType: 'e4WD',
+                transmission: '8-Speed Dual-Clutch',
+                fuel: 'PHEV (Hybrid)',
+                imageUrl: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1000&q=80',
+                description: 'The first-ever Ferrari production plug-in hybrid supercar. Combines a roaring twin-turbo V8 with three electric motors to output an astronomical 986 horsepower with instantaneous throttle response.',
+                colors: [
+                    { name: 'Rosso Corsa (Ferrari Red)', hex: '#e30a17', bgClass: 'from-red-600 to-red-900' },
+                    { name: 'Giallo Modena (Yellow)', hex: '#ffeb00', bgClass: 'from-yellow-400 to-yellow-600' },
+                    { name: 'Nero Daytona (Metallic Black)', hex: '#0f0f12', bgClass: 'from-gray-800 to-stone-950' },
+                    { name: 'Bianco Avus (White)', hex: '#f0f3f5', bgClass: 'from-slate-200 to-zinc-400' }
+                ],
+                highlight: '986 HP Plug-In Hybrid'
+            },
+            {
+                id: 'mclaren',
+                name: 'McLaren 720S Spider',
+                brand: 'McLaren',
+                type: 'Supercar',
+                price: 50400000,
+                engine: '4.0L Twin-Turbo V8',
+                power: '710 HP',
+                topSpeed: '341 km/h',
+                acceleration: '2.9s',
+                driveType: 'RWD',
+                transmission: '7-Speed Dual-Clutch',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=1000&q=80',
+                description: 'Relentless British aerodynamic efficiency. Constructed around a Monocage II-S carbon tub with dihedral doors and a lightning-fast retractable hardtop.',
+                colors: [
+                    { name: 'McLaren Orange', hex: '#ff8000', bgClass: 'from-amber-600 to-zinc-950' },
+                    { name: 'Belize Blue', hex: '#0055ff', bgClass: 'from-blue-600 to-indigo-950' },
+                    { name: 'Onyx Black', hex: '#111111', bgClass: 'from-stone-800 to-black' }
+                ],
+                highlight: 'Ultra-Lightweight Carbon Monocage'
+            },
+            {
+                id: 'porsche',
+                name: 'Porsche 911 GT3 RS (992)',
+                brand: 'Porsche',
+                type: 'Sports Car',
+                price: 35000000,
+                engine: '4.0L Naturally Aspirated Flat-6',
+                power: '518 HP',
+                topSpeed: '296 km/h',
+                acceleration: '3.2s',
+                driveType: 'RWD',
+                transmission: '7-Speed PDK',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1611821064430-0d40291d0f0d?auto=format&fit=crop&w=1000&q=80',
+                description: 'The ultimate street-legal track weapon. Featuring motorsport DRS wing active aero, high-revving 9,000 RPM flat-six engine, and Weissach lightweight package options.',
+                colors: [
+                    { name: 'Signal Green / Weissach Package', hex: '#00b33c', bgClass: 'from-green-600 to-zinc-950' },
+                    { name: 'GT Silver Metallic', hex: '#9ca3af', bgClass: 'from-stone-400 to-stone-900' },
+                    { name: 'Guards Red', hex: '#cc0000', bgClass: 'from-red-600 to-red-950' }
+                ],
+                highlight: '9,000 RPM Flat-Six Engine'
+            },
+            {
+                id: 'viper',
+                name: 'Dodge Viper ACR',
+                brand: 'Dodge',
+                type: 'Muscle Car',
+                price: 18000000,
+                engine: '8.4L Naturally Aspirated V10',
+                power: '645 HP',
+                topSpeed: '285 km/h',
+                acceleration: '3.4s',
+                driveType: 'RWD',
+                transmission: '6-Speed Manual',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80',
+                description: 'An American track legend. Raw, uncompromised, and packing a monumental 8.4-liter V10 engine. The ACR trim adds extreme downforce aerodynamics and custom carbon ceramic brakes for absolute cornering power.',
+                colors: [
+                    { name: 'Viper GTS Blue (Dual White Stripes)', hex: '#0a2f7c', bgClass: 'from-blue-700 to-indigo-950' },
+                    { name: 'Snakeskin Green', hex: '#228b22', bgClass: 'from-green-600 to-emerald-950' },
+                    { name: 'Adrenaline Red (Black Stripes)', hex: '#d61c1c', bgClass: 'from-red-600 to-stone-900' },
+                    { name: 'Billet Silver Metallic', hex: '#a1a8af', bgClass: 'from-slate-400 to-zinc-600' }
+                ],
+                highlight: '8.4L V10 & Six-Speed Manual'
+            },
+            {
+                id: 'rolls',
+                name: 'Rolls-Royce Phantom VIII Extended',
+                brand: 'Rolls-Royce',
+                type: 'Ultra-Luxury',
+                price: 105000000,
+                engine: '6.75L Twin-Turbo V12',
+                power: '563 HP',
+                topSpeed: '250 km/h',
+                acceleration: '5.4s',
+                driveType: 'RWD',
+                transmission: '8-Speed Satellite-Aided Automatic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1000&q=80',
+                description: 'The pinnacle luxury automobile on Earth. Featuring Starlight headliner, laser headlights, bespoke gallery dashboard art, and effortless "Magic Carpet Ride" air suspension.',
+                colors: [
+                    { name: 'Midnight Sapphire / Silver Dual-Tone', hex: '#001a4d', bgClass: 'from-blue-950 to-stone-900' },
+                    { name: 'English White', hex: '#ffffff', bgClass: 'from-slate-100 to-zinc-800' },
+                    { name: 'Diamond Black', hex: '#0a0a0a', bgClass: 'from-neutral-900 to-black' }
+                ],
+                highlight: 'Magic Carpet Ride Suspension'
+            },
+            {
+                id: 'maybach',
+                name: 'Mercedes-Maybach S-Class S680',
+                brand: 'Mercedes-Benz',
+                type: 'Ultra-Luxury',
+                price: 34000000,
+                engine: '6.0L Bi-Turbo V12 AMG',
+                power: '621 HP',
+                topSpeed: '250 km/h',
+                acceleration: '4.7s',
+                driveType: '4MATIC AWD',
+                transmission: '9-Speed Automatic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',
+                description: 'The epitome of sophisticated automotive transport. Handcrafted with bespoke executive rear seating, champagne chilling compartment, active noise cancellation, and a phenomenal hand-built V12 engine.',
+                colors: [
+                    { name: 'Obsidian Black / Kalahari Gold (Two-Tone)', hex: '#d4af37', bgClass: 'from-yellow-600 via-amber-950 to-neutral-950' },
+                    { name: 'Nautical Blue / Diamond White', hex: '#1d2a44', bgClass: 'from-blue-900 to-slate-200' },
+                    { name: 'Manufaktur Selenite Grey', hex: '#5a5e6b', bgClass: 'from-slate-500 to-slate-800' },
+                    { name: 'Rubellite Red', hex: '#4a1525', bgClass: 'from-rose-950 to-stone-950' }
+                ],
+                highlight: 'Bespoke Executive Cabin'
+            },
+            {
+                id: 'gwagon',
+                name: 'Mercedes-Benz G-Class G63 AMG',
+                brand: 'Mercedes-Benz',
+                type: 'Luxury SUV',
+                price: 24500000,
+                engine: '4.0L Twin-Turbo V8 AMG',
+                power: '577 HP',
+                topSpeed: '220 km/h',
+                acceleration: '4.5s',
+                driveType: '4WD',
+                transmission: '9-Speed Automatic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1520050206274-a1ae446cb3cc?auto=format&fit=crop&w=1000&q=80',
+                description: 'The undisputed icon of off-road royalty. Blending extreme military heritage with elite modern opulence. Featuring side-exit exhaust systems and triple-locking differentials for the ultimate road presence.',
+                colors: [
+                    { name: 'Designo Night Black (Matte)', hex: '#1c1c1c', bgClass: 'from-zinc-950 to-neutral-800' },
+                    { name: 'Desert Sand (Matte)', hex: '#c2b280', bgClass: 'from-yellow-700 to-stone-800' },
+                    { name: 'Emerald Green Metallic', hex: '#0b3f2a', bgClass: 'from-emerald-900 to-teal-950' },
+                    { name: 'Polar White', hex: '#ffffff', bgClass: 'from-slate-100 to-stone-500' }
+                ],
+                highlight: 'AMG Handcrafted V8 Power'
+            },
+            {
+                id: 'bmw',
+                name: 'BMW M5 Competition (LCI)',
+                brand: 'BMW',
+                type: 'Luxury Sedan',
+                price: 17000000,
+                engine: '4.4L TwinPower Turbo V8',
+                power: '617 HP',
+                topSpeed: '305 km/h',
+                acceleration: '3.1s',
+                driveType: 'M xDrive AWD/RWD',
+                transmission: '8-Speed M Steptronic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80',
+                description: 'The ultimate luxury executive track sedan. Combines unmatched German luxury and passenger comfort with an M xDrive system capable of switching to complete rear-wheel drive for drifting.',
+                colors: [
+                    { name: 'Marina Bay Blue Metallic', hex: '#1b4d8f', bgClass: 'from-blue-600 to-indigo-950' },
+                    { name: 'Imola Red', hex: '#b31b1b', bgClass: 'from-red-600 to-amber-950' },
+                    { name: 'Frozen Deep Green', hex: '#2e4231', bgClass: 'from-teal-900 to-stone-900' },
+                    { name: 'Brands Hatch Grey', hex: '#4f5254', bgClass: 'from-zinc-500 to-zinc-800' }
+                ],
+                highlight: 'Dynamic M xDrive Drift Mode'
+            },
+            {
+                id: 'audir8',
+                name: 'Audi R8 V10 Performance',
+                brand: 'Audi',
+                type: 'Supercar',
+                price: 27200000,
+                engine: '5.2L Naturally Aspirated V10',
+                power: '612 HP',
+                topSpeed: '331 km/h',
+                acceleration: '3.1s',
+                driveType: 'quattro AWD',
+                transmission: '7-Speed S-Tronic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1000&q=80',
+                description: 'Everyday supercar perfection powered by a screaming mid-mounted V10 engine, lightweight spaceframe chassis, and iconic sideblades.',
+                colors: [
+                    { name: 'Kemora Grey Metallic', hex: '#5f6770', bgClass: 'from-stone-500 to-stone-900' },
+                    { name: 'Vegas Yellow', hex: '#facc15', bgClass: 'from-yellow-400 to-amber-950' },
+                    { name: 'Mythos Black', hex: '#0f0f0f', bgClass: 'from-zinc-900 to-black' }
+                ],
+                highlight: 'Mid-Engine 5.2L V10'
+            },
+            {
+                id: 'fortuner',
+                name: 'Toyota Fortuner Legender',
+                brand: 'Toyota',
+                type: 'Luxury SUV',
+                price: 4800000,
+                engine: '2.8L Turbocharged Diesel',
+                power: '201 HP',
+                topSpeed: '180 km/h',
+                acceleration: '9.8s',
+                driveType: '4x4 High/Low Range',
+                transmission: '6-Speed Automatic',
+                fuel: 'Diesel',
+                imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',
+                description: 'An invincible blend of premium comfort and rugged off-road reliability. Specially optimized suspension, quad-LED headlights, and legendary Toyota dependability make it the ultimate premium workhorse.',
+                colors: [
+                    { name: 'White Pearl with Matte Black Roof', hex: '#ffffff', bgClass: 'from-slate-100 to-neutral-900' },
+                    { name: 'Attitude Black', hex: '#111111', bgClass: 'from-neutral-800 to-neutral-950' },
+                    { name: 'Phantom Brown', hex: '#4e3629', bgClass: 'from-amber-950 to-stone-900' }
+                ],
+                highlight: 'Legendary Bulletproof Reliability'
+            },
+            {
+                id: 'aston',
+                name: 'Aston Martin DBS Volante',
+                brand: 'Aston Martin',
+                type: 'Sports Car',
+                price: 50000000,
+                engine: '5.2L Twin-Turbo V12',
+                power: '715 HP',
+                topSpeed: '340 km/h',
+                acceleration: '3.4s',
+                driveType: 'RWD',
+                transmission: '8-Speed ZF Automatic',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+                description: 'Grand touring royalty combining handcrafted leather luxury, roaring twin-turbocharged V12 power, and iconic British secret-agent elegance.',
+                colors: [
+                    { name: 'Aston Martin Racing Green', hex: '#004225', bgClass: 'from-emerald-950 to-stone-950' },
+                    { name: 'Xenon Grey Metallic', hex: '#4a4d52', bgClass: 'from-stone-600 to-zinc-900' },
+                    { name: 'Magnetic Silver', hex: '#8a9099', bgClass: 'from-slate-400 to-stone-900' }
+                ],
+                highlight: 'Handcrafted V12 Grand Tourer'
+            },
+            {
+                id: 'gtr',
+                name: 'Nissan GT-R Nismo',
+                brand: 'Nissan',
+                type: 'Sports Car',
+                price: 21200000,
+                engine: '3.8L Twin-Turbo V6',
+                power: '600 HP',
+                topSpeed: '315 km/h',
+                acceleration: '2.7s',
+                driveType: 'ATTESA E-TS AWD',
+                transmission: '6-Speed Dual-Clutch',
+                fuel: 'Petrol',
+                imageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80',
+                description: 'The Japanese super-car slayer known worldwide as "Godzilla". Engineered with hand-assembled Takumi V6 twin-turbo engines and incredible cornering grip.',
+                colors: [
+                    { name: 'Nismo Pearl White / Red Accent', hex: '#ffffff', bgClass: 'from-red-900 via-stone-900 to-black' },
+                    { name: 'Katsura Orange', hex: '#d97706', bgClass: 'from-amber-600 to-stone-950' },
+                    { name: 'Super Silver Quad-Coat', hex: '#cbd5e1', bgClass: 'from-slate-300 to-zinc-900' }
+                ],
+                highlight: 'Godzilla All-Wheel-Drive Precision'
+            }
+        ];
+
+        // STATE VARIABLES
+        let selectedBrand = 'All';
+        let selectedType = 'All';
+        let customColors = {}; // { carId: colorIndex }
+        let compareList = []; // list of car objects
+        let selectedCalcCar = CAR_DATA[0];
+        let bookingTargetCar = null;
+
+        // FORMATTER
+        function formatINR(val) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(val);
+        }
+
+        // INIT APPLICATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFilterButtons();
+            renderShowroom();
+            renderCalcButtons();
+            calculateFinance();
+            
+            // Set min booking date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('book-date').min = today;
+        });
+
+        // NAVIGATION TAB SWITCHER
+        function switchTab(tab) {
+            ['showroom', 'compare', 'finance'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                document.getElementById(`nav-${t}`).className = "px-5 py-2 rounded-full text-xs lg:text-sm font-bold tracking-wider uppercase transition-all duration-300 text-stone-300 hover:text-white";
+            });
+
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            document.getElementById(`nav-${tab}`).className = "px-5 py-2 rounded-full text-xs lg:text-sm font-bold tracking-wider uppercase transition-all duration-300 bg-gradient-to-r from-amber-500 to-yellow-500 text-black shadow-md shadow-amber-500/10";
+
+            if(tab === 'compare') renderCompareView();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // RENDER FILTERS
+        function renderFilterButtons() {
+            const brands = ['All', ...new Set(CAR_DATA.map(c => c.brand))];
+            const types = ['All', ...new Set(CAR_DATA.map(c => c.type))];
+
+            const brandContainer = document.getElementById('brand-filters');
+            brandContainer.innerHTML = `<span class="text-xs uppercase tracking-wider text-stone-400 font-bold mr-2">Brand:</span>` +
+                brands.map(b => `<button onclick="filterBrand('${b}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${selectedBrand === b ? 'bg-amber-500 text-black font-extrabold' : 'bg-stone-950 text-stone-400 hover:text-white border border-stone-850'}">${b}</button>`).join('');
+
+            const typeContainer = document.getElementById('type-filters');
+            typeContainer.innerHTML = `<span class="text-xs uppercase tracking-wider text-stone-400 font-bold mr-2">Category:</span>` +
+                types.map(t => `<button onclick="filterType('${t}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${selectedType === t ? 'bg-amber-500 text-black font-extrabold' : 'bg-stone-950 text-stone-400 hover:text-white border border-stone-850'}">${t}</button>`).join('');
+        }
+
+        function filterBrand(brand) {
+            selectedBrand = brand;
+            renderFilterButtons();
+            renderShowroom();
+        }
+
+        function filterType(type) {
+            selectedType = type;
+            renderFilterButtons();
+            renderShowroom();
+        }
+
+        // RENDER SHOWROOM
+        function renderShowroom() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const sortBy = document.getElementById('sort-select').value;
+
+            let filtered = CAR_DATA.filter(car => {
+                const matchSearch = car.name.toLowerCase().includes(searchTerm) || car.brand.toLowerCase().includes(searchTerm);
+                const matchBrand = selectedBrand === 'All' || car.brand === selectedBrand;
+                const matchType = selectedType === 'All' || car.type === selectedType;
+                return matchSearch && matchBrand && matchType;
+            });
+
+            if (sortBy === 'price-low') filtered.sort((a, b) => a.price - b.price);
+            if (sortBy === 'price-high') filtered.sort((a, b) => b.price - a.price);
+            if (sortBy === 'hp') {
+                filtered.sort((a, b) => parseInt(b.power.replace(/\D/g, '')) - parseInt(a.power.replace(/\D/g, '')));
+            }
+
+            const grid = document.getElementById('showroom-grid');
+            if(filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-stone-900/30 rounded-2xl border border-stone-800 p-12 text-center">
+                        <p class="text-lg text-stone-400">No high-performance vehicles match your search or filters.</p>
+                        <button onclick="resetFilters()" class="mt-4 px-6 py-2 bg-amber-500 text-black font-bold rounded-lg text-xs uppercase">Clear Filters</button>
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(car => {
+                const colorIdx = customColors[car.id] !== undefined ? customColors[car.id] : 0;
+                const activeColor = car.colors[colorIdx];
+                const isInCompare = compareList.some(c => c.id === car.id);
+
+                return `
+                <div class="group bg-stone-900 border border-stone-850 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 flex flex-col">
+                    <div class="relative h-60 overflow-hidden bg-stone-950 flex items-center justify-center">
+                        <div class="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t ${activeColor.bgClass} opacity-30 blur-md transition-all duration-500"></div>
+                        
+                        <img src="${car.imageUrl}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                        <div class="absolute inset-0 bg-gradient-to-b from-stone-950/80 via-transparent to-stone-950/90"></div>
+
+                        <span class="absolute top-3 left-3 bg-stone-900/90 border border-stone-800 text-[10px] text-stone-300 px-2.5 py-1 rounded-md uppercase tracking-wider font-bold">
+                            ${car.type}
+                        </span>
+
+                        <span class="absolute top-3 right-3 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded font-black tracking-wide uppercase">
+                            ${car.highlight}
+                        </span>
+
+                        <div class="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/80 px-2 py-1 rounded-lg border border-stone-800">
+                            <span class="w-2.5 h-2.5 rounded-full" style="background-color: ${activeColor.hex}"></span>
+                            <span class="text-[9px] font-bold text-stone-300 uppercase truncate max-w-[120px]">${activeColor.name}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-stone-400 font-bold tracking-widest uppercase">${car.brand}</span>
+                                <span class="text-sm font-black text-amber-400">${formatINR(car.price)}</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold mt-1 text-white group-hover:text-amber-400 transition-colors">
+                                ${car.name}
+                            </h3>
+
+                            <div class="grid grid-cols-2 gap-3 mt-4 bg-stone-950/50 p-3 rounded-xl border border-stone-850">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-amber-500">⚡</span>
+                                    <div>
+                                        <p class="text-[9px] uppercase tracking-wider text-stone-500 font-bold">Engine / HP</p>
+                                        <p class="text-xs font-bold text-stone-200 truncate">${car.power}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-amber-500">⏱️</span>
+                                    <div>
+                                        <p class="text-[9px] uppercase tracking-wider text-stone-500 font-bold">0-100 km/h</p>
+                                        <p class="text-xs font-bold text-stone-200">${car.acceleration}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-4">
+                            <div>
+                                <p class="text-[10px] text-stone-500 uppercase tracking-widest font-extrabold mb-2">Configure Paint Finish:</p>
+                                <div class="flex items-center gap-2">
+                                    ${car.colors.map((col, idx) => `
+                                        <button onclick="changeColor('${car.id}', ${idx})" title="${col.name}" class="w-5 h-5 rounded-full border-2 transition-all ${colorIdx === idx ? 'border-amber-400 scale-125 shadow-lg shadow-amber-400/30' : 'border-transparent hover:scale-110'}" style="background-color: ${col.hex}"></button>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="border-t border-stone-800 pt-4 flex items-center justify-between gap-3">
+                                <button onclick="toggleCompare('${car.id}')" class="px-3 py-2 rounded-xl text-xs font-bold uppercase transition-all duration-200 flex items-center gap-1.5 ${isInCompare ? 'bg-red-500/10 text-red-400 border border-red-500/30' : 'bg-stone-950 hover:bg-stone-800 text-stone-300 border border-stone-800'}">
+                                    <span class="text-sm">${isInCompare ? '✓' : '+'}</span>
+                                    ${isInCompare ? 'Comparing' : 'Compare'}
+                                </button>
+                                
+                                <button onclick="openDetailModal('${car.id}')" class="flex-1 bg-gradient-to-r from-stone-800 to-stone-900 hover:from-amber-500 hover:to-amber-400 hover:text-black text-white font-bold text-xs uppercase tracking-widest py-2 rounded-xl transition-all duration-300 text-center">
+                                    Details & Booking
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            selectedBrand = 'All';
+            selectedType = 'All';
+            renderFilterButtons();
+            renderShowroom();
+        }
+
+        function changeColor(carId, colorIndex) {
+            customColors[carId] = colorIndex;
+            renderShowroom();
+            // Also refresh detail modal if open
+            if(document.getElementById('detail-modal').classList.contains('flex')) {
+                openDetailModal(carId);
+            }
+        }
+
+        // COMPARE ENGINE LOGIC
+        function toggleCompare(carId) {
+            const car = CAR_DATA.find(c => c.id === carId);
+            const index = compareList.findIndex(c => c.id === carId);
+            
+            if(index > -1) {
+                compareList.splice(index, 1);
+            } else {
+                if(compareList.length >= 2) {
+                    compareList = [compareList[1], car];
+                } else {
+                    compareList.push(car);
+                }
+            }
+
+            // Update badge
+            const badge = document.getElementById('compare-badge');
+            if(compareList.length > 0) {
+                badge.innerText = compareList.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            renderShowroom();
+        }
+
+        function renderCompareView() {
+            const container = document.getElementById('compare-container');
+            if(compareList.length === 0) {
+                container.innerHTML = `
+                <div class="bg-stone-900/40 border border-stone-800 p-12 rounded-3xl text-center max-w-2xl mx-auto">
+                    <span class="text-4xl block mb-4">🆚</span>
+                    <h3 class="text-lg font-bold text-white">Compare List is Empty</h3>
+                    <p class="text-stone-400 text-sm mt-2">Browse our luxury inventory and select up to two cars by clicking their "Compare" buttons to conduct an extreme side-by-side spec layout.</p>
+                    <button onclick="switchTab('showroom')" class="mt-6 px-6 py-2.5 bg-amber-500 text-black font-extrabold rounded-xl text-xs uppercase tracking-wider">Go to Showroom</button>
+                </div>`;
+                return;
+            }
+
+            container.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                ${[0, 1].map(slotIdx => {
+                    const car = compareList[slotIdx];
+                    if(!car) {
+                        return `
+                        <div class="bg-stone-900/20 border-2 border-dashed border-stone-850 p-12 rounded-3xl text-center h-[500px] flex flex-col items-center justify-center">
+                            <span class="text-3xl text-stone-600 mb-3">+</span>
+                            <p class="text-stone-500 text-xs uppercase tracking-widest font-bold">Slot ${slotIdx + 1} Available</p>
+                            <p class="text-stone-600 text-xs mt-1">Select another car from the showroom to fill this comparison card.</p>
+                            <button onclick="switchTab('showroom')" class="mt-4 px-4 py-2 bg-stone-900 hover:bg-stone-850 text-amber-500 border border-stone-800 rounded-xl text-[10px] font-bold uppercase tracking-wider">Select Car</button>
+                        </div>`;
+                    }
+
+                    return `
+                    <div class="bg-stone-900 border border-stone-800 rounded-3xl overflow-hidden p-6 relative">
+                        <button onclick="toggleCompare('${car.id}'); renderCompareView();" class="absolute top-4 right-4 bg-stone-950 hover:bg-red-500/20 text-stone-400 hover:text-red-400 w-8 h-8 rounded-full border border-stone-800 flex items-center justify-center transition-all text-xs z-10">✕</button>
+
+                        <div class="h-44 rounded-2xl overflow-hidden relative mb-6">
+                            <img src="${car.imageUrl}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80'" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent"></div>
+                        </div>
+
+                        <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">${car.brand}</span>
+                        <h3 class="text-2xl font-black text-white mt-1">${car.name}</h3>
+                        <p class="text-xl font-bold text-stone-300 mt-2">${formatINR(car.price)}</p>
+
+                        <div class="mt-8 space-y-4">
+                            <div class="bg-stone-950 p-4 rounded-2xl border border-stone-850">
+                                <p class="text-[10px] uppercase text-stone-500 tracking-wider font-extrabold">Engine Type</p>
+                                <p class="text-sm font-bold text-white mt-1">${car.engine}</p>
+                            </div>
+
+                            <div class="bg-stone-950 p-4 rounded-2xl border border-stone-850 grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-[10px] uppercase text-stone-500 tracking-wider font-extrabold">Power Output</p>
+                                    <p class="text-sm font-bold text-amber-400 mt-1">${car.power}</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase text-stone-500 tracking-wider font-extrabold">0 - 100 km/h</p>
+                                    <p class="text-sm font-bold text-white mt-1">${car.acceleration}</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-stone-950 p-4 rounded-2xl border border-stone-850 grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-[10px] uppercase text-stone-500 tracking-wider font-extrabold">Top Velocity</p>
+                                    <p class="text-sm font-bold text-white mt-1">${car.topSpeed}</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase text-stone-500 tracking-wider font-extrabold">Drivetrain</p>
+                                    <p class="text-sm font-bold text-white mt-1">${car.driveType}</p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-stone-400 leading-relaxed pt-4 italic border-t border-stone-850">"${car.description}"</p>
+
+                            <div class="pt-4 flex gap-3">
+                                <button onclick="selectForFinance('${car.id}')" class="flex-1 bg-stone-950 border border-stone-800 hover:border-stone-700 text-stone-300 font-bold text-xs uppercase py-3 rounded-xl transition-all">Calculate Financing</button>
+                                <button onclick="openBookingModal('${car.id}')" class="flex-1 bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-extrabold text-xs uppercase py-3 rounded-xl hover:scale-105 transition-all text-center">Inquire Now</button>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>`;
+        }
+
+        // FINANCE CALCULATOR LOGIC
+        function renderCalcButtons() {
+            const container = document.getElementById('calculator-car-buttons');
+            container.innerHTML = CAR_DATA.map(car => `
+                <button onclick="setCalcCar('${car.id}')" class="p-3 rounded-xl border text-left transition-all ${selectedCalcCar.id === car.id ? 'bg-amber-500/10 border-amber-500 text-white' : 'bg-stone-950 border-stone-850 hover:border-stone-800 text-stone-400'}">
+                    <p class="text-[10px] uppercase font-bold text-stone-500 truncate">${car.brand}</p>
+                    <p class="text-xs font-bold text-stone-200 mt-1 truncate">${car.name}</p>
+                    <p class="text-xs font-semibold text-amber-400 mt-0.5">${formatINR(car.price)}</p>
+                </button>
+            `).join('');
+        }
+
+        function setCalcCar(carId) {
+            selectedCalcCar = CAR_DATA.find(c => c.id === carId);
+            renderCalcButtons();
+            calculateFinance();
+        }
+
+        function selectForFinance(carId) {
+            setCalcCar(carId);
+            switchTab('finance');
+        }
+
+        function calculateFinance() {
+            const downPercent = parseInt(document.getElementById('slider-downpayment').value);
+            const rate = parseFloat(document.getElementById('slider-interest').value);
+            const termMonths = parseInt(document.getElementById('slider-term').value);
+
+            document.getElementById('downpayment-display').innerText = `${downPercent}%`;
+            document.getElementById('interest-display').innerText = `${rate}% APR`;
+            document.getElementById('term-display').innerText = `${termMonths} Months (${termMonths / 12} Years)`;
+
+            const downAmount = selectedCalcCar.price * (downPercent / 100);
+            const principal = selectedCalcCar.price - downAmount;
+            const monthlyRate = (rate / 12) / 100;
+
+            let emi = 0;
+            if(monthlyRate === 0) {
+                emi = principal / termMonths;
+            } else {
+                emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, termMonths)) / (Math.pow(1 + monthlyRate, termMonths) - 1);
+            }
+
+            const totalCost = (emi * termMonths) + downAmount;
+            const totalInterest = (emi * termMonths) - principal;
+
+            document.getElementById('calc-car-image').src = selectedCalcCar.imageUrl;
+            document.getElementById('calc-emi-display').innerHTML = `${formatINR(emi)} <span class="text-xs text-stone-400 block font-normal mt-1">/ Month for ${termMonths} Months</span>`;
+            document.getElementById('calc-price').innerText = formatINR(selectedCalcCar.price);
+            document.getElementById('calc-downpayment').innerText = formatINR(downAmount);
+            document.getElementById('calc-principal').innerText = formatINR(principal);
+            document.getElementById('calc-interest').innerText = formatINR(totalInterest);
+            document.getElementById('calc-total').innerText = formatINR(totalCost);
+        }
+
+        function openBookingFromCalc() {
+            openBookingModal(selectedCalcCar.id);
+        }
+
+        // MODALS LOGIC
+        function openDetailModal(carId) {
+            const car = CAR_DATA.find(c => c.id === carId);
+            const colorIdx = customColors[car.id] !== undefined ? customColors[car.id] : 0;
+            const activeColor = car.colors[colorIdx];
+
+            const modalBody = document.getElementById('detail-modal-body');
+            modalBody.innerHTML = `
+                <div class="bg-stone-950 p-6 flex flex-col justify-between relative min-h-[350px]">
+                    <div class="absolute inset-0 bg-gradient-to-tr ${activeColor.bgClass} opacity-20 pointer-events-none"></div>
+                    
+                    <div class="relative z-10">
+                        <span class="bg-amber-500 text-black text-[10px] px-3 py-1 rounded font-black uppercase tracking-wider">Live Configurator Preview</span>
+                        <h4 class="text-xs text-stone-400 uppercase tracking-[0.2em] font-extrabold mt-4">Paint Selected:</h4>
+                        <p class="text-lg font-bold text-white mt-1">${activeColor.name}</p>
+                    </div>
+
+                    <div class="relative z-10 my-6 rounded-2xl overflow-hidden h-52 border border-stone-800 shadow-2xl">
+                        <img src="${car.imageUrl}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80'" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 right-3 w-5 h-5 rounded-full border-2 border-white shadow-md animate-pulse" style="background-color: ${activeColor.hex}"></div>
+                    </div>
+
+                    <div class="relative z-10 bg-stone-900/80 p-4 rounded-2xl border border-stone-850">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-widest font-black mb-3">Select Bespoke Exterior Paint Finish:</p>
+                        <div class="flex flex-wrap gap-3">
+                            ${car.colors.map((color, idx) => `
+                                <button onclick="changeColor('${car.id}', ${idx})" class="w-8 h-8 rounded-full border-2 transition-all flex items-center justify-center ${colorIdx === idx ? 'border-amber-400 scale-125' : 'border-stone-800 hover:scale-110'}" style="background-color: ${color.hex}">
+                                    ${colorIdx === idx ? '<span class="text-[10px] font-black text-white mix-blend-difference">✓</span>' : ''}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 space-y-6">
+                    <div>
+                        <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">${car.brand}</span>
+                        <h3 class="text-3xl font-black text-white mt-1">${car.name}</h3>
+                        <p class="text-2xl font-black text-amber-400 mt-2">${formatINR(car.price)}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs text-stone-400 uppercase tracking-widest font-extrabold mb-2">Heritage & Overview</h4>
+                        <p class="text-stone-300 text-xs leading-relaxed">${car.description}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs text-stone-400 uppercase tracking-widest font-extrabold mb-3">Technical Specifications</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-stone-950 p-2.5 rounded-xl border border-stone-850">
+                                <p class="text-[9px] uppercase text-stone-500 font-bold tracking-wider">Engine Type</p>
+                                <p class="text-xs font-extrabold text-stone-200 mt-0.5 truncate">${car.engine}</p>
+                            </div>
+                            <div class="bg-stone-950 p-2.5 rounded-xl border border-stone-850">
+                                <p class="text-[9px] uppercase text-stone-500 font-bold tracking-wider">Horsepower</p>
+                                <p class="text-xs font-extrabold text-stone-200 mt-0.5 truncate">${car.power}</p>
+                            </div>
+                            <div class="bg-stone-950 p-2.5 rounded-xl border border-stone-850">
+                                <p class="text-[9px] uppercase text-stone-500 font-bold tracking-wider">0-100 km/h</p>
+                                <p class="text-xs font-extrabold text-stone-200 mt-0.5 truncate">${car.acceleration}</p>
+                            </div>
+                            <div class="bg-stone-950 p-2.5 rounded-xl border border-stone-850">
+                                <p class="text-[9px] uppercase text-stone-500 font-bold tracking-wider">Max Velocity</p>
+                                <p class="text-xs font-extrabold text-stone-200 mt-0.5 truncate">${car.topSpeed}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex gap-3">
+                        <button onclick="closeDetailModal(); openBookingModal('${car.id}');" class="flex-1 bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-extrabold text-xs uppercase tracking-widest py-3.5 rounded-xl hover:scale-102 transition-all text-center">Schedule Private Test Drive</button>
+                    </div>
+                </div>`;
+
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function openBookingModal(carId) {
+            bookingTargetCar = CAR_DATA.find(c => c.id === carId) || CAR_DATA[0];
+            document.getElementById('booking-car-name').innerText = bookingTargetCar.name;
+
+            document.getElementById('booking-form-step').classList.remove('hidden');
+            document.getElementById('booking-confirmed-step').classList.add('hidden');
+
+            const modal = document.getElementById('booking-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const ticketId = 'YUVRAJ-' + Math.floor(100000 + Math.random() * 900000);
+            
+            document.getElementById('ticket-id').innerText = ticketId;
+            document.getElementById('ticket-customer').innerText = document.getElementById('book-name').value;
+            document.getElementById('ticket-car').innerText = bookingTargetCar.name;
+            document.getElementById('ticket-date').innerText = document.getElementById('book-date').value;
+
+            document.getElementById('booking-form-step').classList.add('hidden');
+            document.getElementById('booking-confirmed-step').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
